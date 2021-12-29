@@ -16,13 +16,16 @@ import { ReviewComponent } from './components/review/review.component';
 import { ResultsComponent } from './components/results/results.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes =[
 
-  {path: 'home', component: QuestionsFormComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'quiz', component: QuestionsFormComponent},
   {path: 'review', component: ReviewComponent},
   {path: '', redirectTo: '/home',pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
+
 
 ];
 
@@ -33,7 +36,8 @@ const routes: Routes =[
     TopNavComponent,
     QuestionsFormComponent,
     ReviewComponent,
-    ResultsComponent
+    ResultsComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

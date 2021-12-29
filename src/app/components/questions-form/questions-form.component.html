@@ -1,34 +1,34 @@
 <form class="quiz-form" #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.form)">
     <div *ngFor="let theQuestion of questions" >
         <h2>{{theQuestion.question}}</h2>
-        <div class="custom-control custom-radio">
-            <input type="radio" value="{{theQuestion.optionA}}" id="customRadio1{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
+        <div class="custom-control custom-radio" >
+            <input (input)="onChangeRadio($event.target.value)"  type="radio" value="{{theQuestion.optionA}}" id="customRadio1{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
             <label class="custom-control-label" for="customRadio1{{theQuestion.id}}">{{theQuestion.optionA}}</label>
         </div>
 
         <br>
 
         <div class="custom-control custom-radio">
-            <input type="radio" value="{{theQuestion.optionB}}" id="customRadio2{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
+            <input (input)="onChangeRadio($event.target.value)"  type="radio" value="{{theQuestion.optionB}}" id="customRadio2{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
             <label class="custom-control-label" for="customRadio2{{theQuestion.id}}">{{theQuestion.optionB}}</label>
         </div>
         <br>
 
         <div class="custom-control custom-radio">
-            <input type="radio" value="{{theQuestion.optionC}}" id="customRadio3{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
+            <input (input)="onChangeRadio($event.target.value)" type="radio" value="{{theQuestion.optionC}}" id="customRadio3{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
             <label class="custom-control-label" for="customRadio3{{theQuestion.id}}">{{theQuestion.optionC}}</label>
         </div>
         <br>
 
         <div class="custom-control custom-radio">
-            <input type="radio" value="{{theQuestion.optionD}}" id="customRadio4{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
+            <input (input)="onChangeRadio($event.target.value)" type="radio" value="{{theQuestion.optionD}}" id="customRadio4{{theQuestion.id}}" name="customRadio{{theQuestion.id}}" class="custom-control-input" ngModel>
             <label class="custom-control-label" for="customRadio4{{theQuestion.id}}">{{theQuestion.optionD}}</label>
         </div>
     </div>
 
     <!-- submit button -->
     <div class="text-center">
-        <button type="submit" class="btn btn-info">submit</button>
+        <button [disabled]="!isSet" type="submit" class="btn btn-primary">submit</button>
     </div>
 
    

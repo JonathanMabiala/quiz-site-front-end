@@ -17,6 +17,7 @@ import { Route, Router } from '@angular/router';
 })
 export class QuestionsFormComponent implements OnInit {
 
+  isSet:string='';
   questions: Question[] = [];
   answers!: Answer[];
   option!: string;
@@ -32,6 +33,12 @@ export class QuestionsFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
+
+  onChangeRadio(value:string){
+    this.isSet = value;
+
+    console.log("Is set param : " + this.isSet);
+  }
 
   ngOnInit(): void {
     this.getQuestionList();
