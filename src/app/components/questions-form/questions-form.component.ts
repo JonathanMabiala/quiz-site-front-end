@@ -56,17 +56,19 @@ export class QuestionsFormComponent implements OnInit {
 
     let i: number = 1;
 
+    
+
     while (i <= this.questions.length) {
       let el: string = "customRadio" + i;
       if (this.answerForm[el] === this.answers[i - 1].answer) {
-        console.log("Question " + i + " Correct.");
-        this.quizService.addReview("You anwsered question " + i + " correctly.");
+        console.log(`Question ${i} : ${this.questions[i-1].question} is Correct.`);
+        this.quizService.addReview(`Question ${i} : "${this.questions[i-1].question}" is Correct.`);
         this.result +=5;
       } else {
-        console.log("You answered Question " + i + " wrong.");
+        console.log(`Question ${i} : "${this.questions[i-1].question}" is wrong.`);
         console.log("The correct answer is " + this.answers[i - 1].answer);
 
-        this.quizService.addReview("Question " + i + " is wrong.");
+        this.quizService.addReview(`Question ${i} : "${this.questions[i-1].question}" is wrong.`);
         this.quizService.addReview("The correct answer is " + this.answers[i - 1].answer);
       }
       i++;

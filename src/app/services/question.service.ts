@@ -13,10 +13,20 @@ export class QuestionService {
 
   constructor( private httpClient: HttpClient) { }
 
+  getQuestion(theQuestionId: number): Observable<Question> {
+
+    // Need to build URL on Product id
+    const questionUrl = `${this.baseUrl}/${theQuestionId}`;
+
+    return this.httpClient.get<GetQuestionResponse>(questionUrl).pipe(
+      map(response => response._embedded.question)
+    );
+
+  }
 
   getQuestions() : Observable<Question[]>{
 
-    return this.httpClient.get<GetQuestionResponse>(this.baseUrl).pipe(
+    return this.httpClient.get<GetQuestionsResponse>(this.baseUrl).pipe(
       map( response => response._embedded.questions)
     );
 
@@ -26,10 +36,18 @@ export class QuestionService {
 
 
 
+
+
+}
+
+interface GetQuestionsResponse{
+  _embedded:{
+    questions: Question[];
+  }
 }
 
 interface GetQuestionResponse{
   _embedded:{
-    questions: Question[];
+    question: Question;
   }
 }
